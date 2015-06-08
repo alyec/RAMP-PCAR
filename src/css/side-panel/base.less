@@ -51,13 +51,16 @@
 
         > ul[role="tablist"] { // WET Tabs override
             height: 32px;
+            display:block;
 
             li {
                 border-width: 0;
                 padding: 0;
                 text-align: center;
                 width: 50%;
+                display: inline-block;
                 margin: 0;
+                left: 0;
                 overflow: hidden;
                 top: 0;
                 //.default-transition;
@@ -151,7 +154,7 @@
             bottom: 1px;
         }
 
-        .tgl-panel[role="tabpanel"] {
+        .tgl-panel {
             //position: static;
             bottom: 0;
             position: absolute;
