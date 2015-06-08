@@ -11,7 +11,7 @@
 		<!-- Meta data-->
 		{{>headresources}}
 	</head>
-	<body vocab="http://schema.org/" typeof="WebPage">
+	<body vocab="http://schema.org/" {{#if pageclass}}class="{{pageclass}}" {{/if}} typeof="WebPage">
 		<ul id="wb-tphp">
 			<li class="wb-slc">
 				<a class="wb-sl" href="#wb-cont">{{{i18n "tmpl-skip-cont"}}}</a>
