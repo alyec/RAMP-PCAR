@@ -1,4 +1,4 @@
-﻿/*global location, $, document */
+﻿/*global location, $, document, staticPath */
 
 /**
 *
@@ -22,6 +22,10 @@ var RAMP,
     jsPrefix = pathname + jsFolderPath,
     htmlNode = $("html"),
     dojoConfig;
+
+if (typeof staticPath === 'string') {
+    jsPrefix = staticPath + jsFolderPath;
+}
 
 /**
 * RAMP global class.

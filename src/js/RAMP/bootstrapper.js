@@ -1,4 +1,4 @@
-﻿/*global require, window, dojoConfig, i18n, document, $, console, RAMP */
+﻿/*global require, window, dojoConfig, i18n, document, $, console, RAMP, staticPath */
 
 /**
 * Ramp module
@@ -209,6 +209,7 @@ require([
         //To hold values from RAMP service
 
         var lang = $("html").attr("lang"),
+            i18nOpts = { load: "current", fallbackLng: false },
             configFile,
             defJson;
 
@@ -218,15 +219,21 @@ require([
 
         RAMP.locale = lang;
 
+        //loading config object from JSON file
+        configFile = (lang === "fr") ? "config.fr.json" : "config.en.json";
+        i18nOpts.lang = lang + '-CA';
+
+        if (typeof staticPath === 'string') {
+            i18nOpts.resGetPath = staticPath + 'locales/__lng__/__ns__.json';
+            configFile = staticPath + configFile;
+        }
+
         i18n.init(
         {
             lng: lang + "-CA",
             load: "current",
             fallbackLng: false
         });
-
-        //loading config object from JSON file
-        configFile = (lang === "fr") ? "config.fr.json" : "config.en.json";
 
         // Request the JSON config file
         defJson = xhr(configFile, {
