@@ -221,7 +221,7 @@ require([
 
         //loading config object from JSON file
         configFile = (lang === "fr") ? "config.fr.json" : "config.en.json";
-        i18nOpts.lang = lang + '-CA';
+        i18nOpts.lng = lang + '-CA';
 
         if (typeof staticPath === 'string') {
             i18nOpts.resGetPath = staticPath + 'locales/__lng__/__ns__.json';
