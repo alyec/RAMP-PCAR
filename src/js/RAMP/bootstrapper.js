@@ -228,12 +228,7 @@ require([
             configFile = staticPath + configFile;
         }
 
-        i18n.init(
-        {
-            lng: lang + "-CA",
-            load: "current",
-            fallbackLng: false
-        });
+        i18n.init(i18nOpts);
 
         // Request the JSON config file
         defJson = xhr(configFile, {
