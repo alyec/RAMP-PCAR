@@ -134,6 +134,10 @@ RAMP = {
     }
 };
 
+if (typeof staticPath === 'string') {
+    RAMP.scripts = ['http://js.arcgis.com/3.13/', jsPrefix + 'RAMP/bootstrapper.js'];
+}
+
 var importScript = (function (oHead) {
     'use strict';
 
