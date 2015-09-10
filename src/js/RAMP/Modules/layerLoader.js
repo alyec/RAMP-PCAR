@@ -365,7 +365,9 @@ define([
                                 //layer is in different projection.  reproject to basemap
 
                                 var box = RampMap.localProjectExtent(boundingBoxExtent, map.spatialReference);
-                                boundingBox.add(UtilMisc.createGraphic(box));
+                                if (box) {
+                                    boundingBox.add(UtilMisc.createGraphic(box));
+                                }
 
                                 //Geometry Service Version.  Makes a more accurate bounding box, but requires an arcserver
                                 /*
