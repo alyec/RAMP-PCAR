@@ -344,14 +344,14 @@ define([
                         FeatureClickHandler.onFeatureMouseOut(evt);
                     });
 
-                    //generate bounding box                        
+                    //generate bounding box
                     if (layerConfig.layerExtent) {
                         var boundingBoxExtent,
                             boundingBox = new GraphicsLayer({
                                 id: String.format("boundingBoxLayer_{0}", layer.id),
                                 visible: layerConfig.settings.boundingBoxVisible
                             });
-                   
+
                         boundingBoxExtent = new EsriExtent(layerConfig.layerExtent);
                         // add ramp.user property to the bounding box as well
                         boundingBox.ramp = { type: GlobalStorage.layerType.BoundingBox, user: layer.ramp.user };
@@ -365,7 +365,9 @@ define([
                                 //layer is in different projection.  reproject to basemap
 
                                 var box = RampMap.localProjectExtent(boundingBoxExtent, map.spatialReference);
-                                boundingBox.add(UtilMisc.createGraphic(box));
+                                if (box) {
+                                    boundingBox.add(UtilMisc.createGraphic(box));
+                                }
 
                                 //Geometry Service Version.  Makes a more accurate bounding box, but requires an arcserver
                                 /*

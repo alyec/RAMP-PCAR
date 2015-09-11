@@ -479,6 +479,10 @@ define([
             } else {
                 throw new Error('No WKT or WKID specified on extent.spatialReference');
             }
+
+            if (!proj4.defs(srcProj)) {
+                return null;
+            }
             projConvert = proj4(srcProj, 'EPSG:' + sr.wkid);
             transformed = interpolatedPoly.map(function (x) { return projConvert.forward(x); });
 
