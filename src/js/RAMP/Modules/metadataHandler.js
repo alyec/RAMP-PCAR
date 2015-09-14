@@ -1,27 +1,27 @@
-﻿/*global define, tmpl, i18n, $, RAMP */
+﻿/*global define, tmpl, i18n, $, RAMP, staticPath */
 
 /**
 * MetadataHandler submodule
 *
 * @module RAMP
-* 
+*
 */
 
 /**
 * Metadata Handler class.
 *
-* The metadataHandler class registers and manages the metadata panel. 
+* The metadataHandler class registers and manages the metadata panel.
 * (The panel created by the "metadata" buttons in the layer selector.
 *
 * ####Imports RAMP Modules:
-* {{#crossLink "EventManager"}}{{/crossLink}}  
+* {{#crossLink "EventManager"}}{{/crossLink}}
 * {{#crossLink "PopupManager"}}{{/crossLink}}
 * {{#crossLink "TmplHelper"}}{{/crossLink}}
 * {{#crossLink "Util"}}{{/crossLink}}
 *
 * ####Uses RAMP Templates:
 * {{#crossLink "templates/filter_wms_meta_Template.json"}}{{/crossLink}}
-* 
+*
 * @class MetadataHandler
 * @static
 * @uses dojo/Deferred
@@ -170,7 +170,12 @@ define([
                     if (!metadataUrl) {
                         metadataError();
                     } else {
-                        UtilMisc.transformXML(metadataUrl, "assets/metadata/xstyle_default_" + RAMP.locale + ".xsl",
+
+                        var xslFilePath = "assets/metadata/xstyle_default_" + RAMP.locale + ".xsl";
+                        if (typeof staticPath === 'string') {
+                            xslFilePath = staticPath + xslFilePath;
+                        }
+                        UtilMisc.transformXML(metadataUrl, xslFilePath,
                             function (error, data) {
                                 if (error) {
                                     metadataError();
@@ -189,7 +194,7 @@ define([
                 topic.publish(EventManager.GUI.SUBPANEL_CLOSE, { origin: "filterManager" });
             }
         }
-        
+
         return {
             init: function () {
                 setupPopup();
