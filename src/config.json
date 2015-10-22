@@ -222,7 +222,7 @@
                     "url": "http://services.arcgisonline.com/arcgis/rest/services/World_Physical_Map/MapServer"
                 }
             ],
-            "thumbnail": "assets/images/basemap/imagery.jpg",
+            "thumbnail": "assets/images/basemap/physical_earth.jpg",
             "scaleCssClass": "map-scale-dark",
             "type": "Imagery",
             "name": "@@config.basemaps.baseEsriPhysical.name",
@@ -241,7 +241,7 @@
                     "url": "http://services.arcgisonline.com/arcgis/rest/services/World_Shaded_Relief/MapServer"
                 }
             ],
-            "thumbnail": "assets/images/basemap/imagery.jpg",
+            "thumbnail": "assets/images/basemap/shaded_relief.jpg",
             "scaleCssClass": "map-scale-dark",
             "type": "Imagery",
             "name": "@@config.basemaps.baseEsriRelief.name",
@@ -260,7 +260,7 @@
                     "url": "http://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer"
                 }
             ],
-            "thumbnail": "assets/images/basemap/imagery.jpg",
+            "thumbnail": "assets/images/basemap/streets.jpg",
             "scaleCssClass": "map-scale-dark",
             "type": "Topographic",
             "name": "@@config.basemaps.baseEsriStreet.name",
@@ -279,7 +279,7 @@
                     "url": "http://services.arcgisonline.com/arcgis/rest/services/World_Terrain_Base/MapServer"
                 }
             ],
-            "thumbnail": "assets/images/basemap/imagery.jpg",
+            "thumbnail": "assets/images/basemap/terrain.jpg",
             "scaleCssClass": "map-scale-dark",
             "type": "Topographic",
             "name": "@@config.basemaps.baseEsriTerrain.name",
@@ -298,7 +298,7 @@
                     "url": "http://services.arcgisonline.com/arcgis/rest/services/World_Topo_Map/MapServer"
                 }
             ],
-            "thumbnail": "assets/images/basemap/imagery.jpg",
+            "thumbnail": "assets/images/basemap/topographic.jpg",
             "scaleCssClass": "map-scale-dark",
             "type": "Topographic",
             "name": "@@config.basemaps.baseEsriTopo.name",
