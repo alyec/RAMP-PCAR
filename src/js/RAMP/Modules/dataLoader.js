@@ -134,7 +134,8 @@ define([
             var def = new Deferred(), promise;
 
             try {
-                promise = (new EsriRequest({ url: featureLayerEndpoint + '?f=json' })).promise;
+                console.log('polling server for ' + featureLayerEndpoint);
+                promise = (new EsriRequest({ url: featureLayerEndpoint + '?f=json', callbackParamName: 'callback' })).promise;
             } catch (e) {
                 def.reject(e);
             }
@@ -197,7 +198,7 @@ define([
             legendUrl = legendUrl.substring(0, idx) + '/legend?f=json';
 
             try {
-                promise = (new EsriRequest({ url: legendUrl })).promise;
+                promise = (new EsriRequest({ url: legendUrl, callbackParamName: 'callback' })).promise;
             } catch (e) {
                 def.reject(e);
             }
