@@ -8,12 +8,12 @@
 /**
 * Map click handler class.
 *
-* The mapClickHandler registers WMS layers for combined getFeatureInfo request.  It makes a 
+* The mapClickHandler registers WMS layers for combined getFeatureInfo request.  It makes a
 * single subscription to Map.CLICK and triggers a set of requests and joins the results together.
 *
 * ####Imports RAMP Modules:
-* {{#crossLink "EventManager"}}{{/crossLink}}  
-* 
+* {{#crossLink "EventManager"}}{{/crossLink}}
+*
 * @class MapClickHandler
 * @static
 * @uses esri/request
@@ -108,7 +108,7 @@ define([
                                 wkid = mapSR.wkid;
                             }
                             if (wmsLayer.version === "1.3" || wmsLayer.version === "1.3.0") {
-                                req = { CRS: "EPSG:" + wkid, I: evt.screenPoint.x, J: evt.screenPoint.y };
+                                req = { CRS: "EPSG:" + wkid, I: evt.screenPoint.x, J: evt.screenPoint.y, STYLES: '', FORMAT: wmsLayer.imageFormat };
                             } else {
                                 req = { SRS: "EPSG:" + wkid, X: evt.screenPoint.x, Y: evt.screenPoint.y };
                             }
@@ -136,7 +136,7 @@ define([
                         } catch (exception) {
                             console.log("WMS Error: " + exception);
                         }
-                        
+
                     });
 
                     topic.publish(EventManager.GUI.SUBPANEL_OPEN, {
