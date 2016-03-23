@@ -20,11 +20,16 @@ var RAMP,
     jsFolderPath = "js/",
     pathname = location.pathname.replace(/\/[^/]+$/, "") + "/",
     jsPrefix = pathname + jsFolderPath,
+    wetPrefix = jsPrefix + 'lib/wet-boew/',
     htmlNode = $("html"),
     dojoConfig;
 
 if (typeof staticPath === 'string') {
     jsPrefix = staticPath + jsFolderPath;
+}
+
+if (typeof wetPath === 'string') {
+    wetPrefix = wetPath;
 }
 
 /**
@@ -101,7 +106,7 @@ RAMP = {
      * @property scripts
      * @type array
      */
-    scripts: [jsPrefix + 'lib/wet-boew/js/wet-boew.js', 'http://js.arcgis.com/3.13/', jsPrefix + 'RAMP/bootstrapper.js'],
+    scripts: [wetPrefix + 'js/wet-boew.js', 'http://js.arcgis.com/3.13/', jsPrefix + 'RAMP/bootstrapper.js'],
 
     /**
     * Store feature datasets.  Keyed by layer id, value is set of attribute data.
