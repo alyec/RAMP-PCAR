@@ -1,4 +1,4 @@
-/* global define, i18n, jQuery, console, $, document, RAMP, window */
+/* global define, i18n, jQuery, console, $, document, RAMP, window, mapCartPrefix */
 
 /**
 * BookmarkLink submodule
@@ -211,10 +211,9 @@ define([
                     mapCartButton = $("#gotocart");
 
                     mapCartButton.on('click', function () {
-                        var params = RAMP.__currentUrl__.split('.html')[1] || '',
-                            link = '/geonetwork/mapcart/' +
-                                (RAMP.locale === 'en' ? 'eng' : 'fre') +
-                                params;
+                        var params = RAMP.__currentUrl__.split('?')[1] || '',
+                            prefix = typeof mapCartPrefix === 'undefined' ? '/geonetwork/mapcart/' : mapCartPrefix,
+                            link = prefix + (RAMP.locale === 'en' ? 'eng' : 'fre') + '?' + params;
 
                         // redirect to catalogue
                         window.location.href = link;
@@ -369,7 +368,7 @@ define([
         function updateURL() {
             var link = baseUrl,
                 delim = "?";
-                
+
             // force smallKeys to be there since we need a null if it doesn't exist
             addParameter('keys', (typeof RAMP.__smallKeys__ === 'undefined' || RAMP.__smallKeys__.length <= 0) ? {
                         keys: 'null'
@@ -960,7 +959,7 @@ define([
                         // Convert an array of string into a "+" delimited string
                         vl: Object.keys(visibleLayers).join("+")
                     });
-                    
+
                     addParameter('keys', (typeof RAMP.__smallKeys__ === undefined || RAMP.__smallKeys__.length <= 0) ? {
                         keys: 'null'
                     } : {
